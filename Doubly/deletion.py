@@ -20,7 +20,7 @@ def isEmpty():
 def printList():
     pointer = head
     while pointer is not None:
-        print(f"({pointer.key},{pointer.data})", end="")
+        print(f"({pointer.key},{pointer.data})", end=" ")
         pointer = pointer.next
 
 
@@ -86,7 +86,7 @@ def delete(key):
     return current
 
 
-def insert_after(key, new_key,data):
+def insert_after(key, new_key, data):
     global head, last, current
     current = head
     while current and current.key is not key:
@@ -103,6 +103,14 @@ def insert_after(key, new_key,data):
     new_link.prev = current
     current.next = new_link
     return True
+
+
+def display_backwards():
+    global last
+    pointer = last
+    while pointer:
+        print("({}, {})".format(pointer.key, pointer.data), end=" ")
+        pointer = pointer.prev
 
 
 insertFirst(1, 10)
@@ -127,3 +135,5 @@ printList()
 print("\n List after inserting key(4): ")
 insert_after(6, 18, 55)
 printList()
+print("\n List displayed backwards: ")
+display_backwards()
